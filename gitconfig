@@ -1,0 +1,15 @@
+[user]
+	name = qingyan1990
+	email = liqingyan1990@sina.com
+[core]
+	autocrlf = input
+	safecrlf = true
+	editor = gvim
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
