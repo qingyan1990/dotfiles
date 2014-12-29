@@ -1,37 +1,54 @@
-set nocompatible               " be iMproved
-filetype off                   " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-
+set nocompatible              " be iMproved, required
+filetype off                  " required
 let mapleader = ","
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" My Bundles here:
-Bundle 'ap/vim-css-color'
-Bundle 'vim-scripts/Rename2'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tomasr/molokai'
-Bundle "mileszs/ack.vim"
-Bundle "nathanaelkane/vim-indent-guides"
-Bundle "scrooloose/syntastic"
-"Bundle "mattn/zencoding-vim"
-Bundle "mattn/emmet-vim"
-Bundle "majutsushi/tagbar"
-Bundle "msanders/snipmate.vim"
-Bundle "terryma/vim-multiple-cursors"
-Bundle "vim-ruby/vim-ruby"
-Bundle "vim-scripts/vimwiki"
-filetype plugin indent on     " required!
-filetype indent on
-filetype plugin on
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'ap/vim-css-color'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'vim-scripts/Rename2'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tomasr/molokai'
+Plugin 'mileszs/ack.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/syntastic'
+Plugin 'mattn/emmet-vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'msanders/snipmate.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-scripts/vimwiki'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 colorscheme molokai
 
 syntax on
@@ -50,6 +67,7 @@ map <F8> :NERDTreeToggle<CR>
 "au BufRead,BufNewFile *.py set expandtab
 
 
+set backspace=2
 set hlsearch
 set incsearch
 set nowrapscan
@@ -63,6 +81,13 @@ set smartindent
 set smarttab
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+
+if has("gui_running")
+  imap <C-s> <Esc>:w<CR>
+else
+  imap <Esc>s <Esc>:w<CR>
+endif
+
 "Toggle Menu and Toolbar
 set guioptions-=m
 set guioptions-=T
@@ -75,9 +100,16 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
 \endif<CR>
 
 
-if has("gui_running")
-  imap <C-s> <Esc>:w<CR>
-else
-  imap <Esc>s <Esc>:w<CR>
-endif
 
+
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
